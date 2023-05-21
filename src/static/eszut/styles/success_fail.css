@@ -1,0 +1,19 @@
+.success, .fail {
+    margin: auto;
+    width: 250px;
+    height: 80px;
+    border-radius: 5px;
+    color: mintcream;
+    font-size: 0.6em;
+    text-align: center;
+    padding: 10px;
+}
+.success {
+    border: 5px solid greenyellow;
+    background-color: green;
+}
+
+.fail {
+    border: 5px solid darkred;
+    background-color: crimson;
+}

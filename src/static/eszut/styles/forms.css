@@ -1,0 +1,59 @@
+@import url("/eszut/styles/success_fail.css");
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin: auto;
+    width: 90%;
+    
+}
+
+.formContainer {
+    display: grid;
+    grid-template-columns: 1fr minmax(150px,300px);
+    grid-template-rows: 60px;
+}
+
+
+label {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+}
+
+select, input[type=text], input[type=email], input[type=password] {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: auto auto;
+}
+
+input[type=submit], input[type=reset] {
+    width: 80px;
+    height: 40px;
+    font-weight: bold;
+    margin: auto;
+    border: 0px;
+
+    background-color: white;
+    color: #201f1f;
+}
+
+input[type=submit]:hover, input[type=reset]:hover {
+    background-color: #201f1f;
+    color: white;
+    transition: 1s ease-out;
+}
+
+a {
+    color: azure;
+    font-size: 0.6em;
+}
+
+a:hover, a:active {
+    color: dimgray;
+}

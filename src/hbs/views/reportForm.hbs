@@ -1,0 +1,53 @@
+<h1>Zgłoszenie usterki</h1>
+<form action="/eszut/process/addNewReport" method="post">
+   {{#if (ifCond memory.success '==' "1")}}
+        <div class="success">
+            Pomyślnie udało się dodać zgłoszenie.<br>
+            Zgłoszenie o identyfikatorze {{memory.reportid}}
+        </div>
+    {{else }}
+        {{#if (ifCond memory.success '==' "0")}}
+        <div class="fail">
+            Nastąpił błąd podczas rejestracji zgłoszenia.
+        </div>
+        {{/if}}
+    {{/if}}
+    
+
+
+    <div class="formContainer">
+    <label for="where">Gdzie jest usterka?</label>
+    <input type="text" name="where" id="where" required placeholder="Sala..."
+        {{#if memory.where}}
+            value="{{memory.where}}"
+        {{/if}}
+    />
+
+    <label for="who">Kto zgłasza?</label>
+    <input type="text" name="who" id="who" required placeholder="Imię i nazwisko..."
+        {{#if memory.who}}
+            value="{{memory.who}}"
+        {{/if}}/>
+
+    <label for="what">Co się stało?</label>
+    <input type="text" name="what" id="what" required placeholder="Krótki opis..."
+        {{#if memory.what}}
+            value="{{memory.what}}"
+        {{/if}}/>
+
+    <label for="category">Wybierz kategorię zgłoszenia:</label>
+    <select title="kategoria" name="category" id="category" required
+        {{#if memory.category}}
+            value="{{memory.category}}"
+        {{/if}}>
+        {{#each category}}
+        <option value="{{this.id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+
+    <input type="submit" value="Wyślij">
+    <input type="reset" value="Wyczyść">
+    </div>
+</form>
+<a href="/eszut/dashboard">Przejdź do panelu administratora!</a>
+<link rel="stylesheet" href="/eszut/styles/forms.css" />

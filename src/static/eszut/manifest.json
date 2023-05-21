@@ -1,0 +1,25 @@
+{
+    "name": "Elektroniczny System Zgłaszania Usterek Technicznych",
+    "short_name": "ESZUT",
+    "start_url": "/eszut/",
+    "icons": [
+        {
+            "src": "/eszut/img/icons/android-chrome-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/eszut/img/icons/mstile-150x150.png",
+            "sizes": "150x150",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "serviceworker": {
+      "src": "/eszut/service-worker.js",
+      "scope": "/eszut/"
+    }
+
+}

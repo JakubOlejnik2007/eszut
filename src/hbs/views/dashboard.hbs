@@ -1,0 +1,13 @@
+<header>
+    <h1>Panel administracyjny</h1><a href="/eszut/logout">Wyloguj się</a>
+</header>
+
+<p>Witaj {{user.name}}! </p>
+<h2>Problemy do rozwiązania:</h2>
+<section class="problems">
+    {{#each data}}
+        {{>problem this}}
+    {{/each}}
+</section>
+<link rel="stylesheet" href="/eszut/styles/dashboard.css">
+<script src="/eszut/scripts/problems.js"></script>
