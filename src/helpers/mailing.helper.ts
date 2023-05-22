@@ -20,7 +20,7 @@ const sendMails = async (report: TReport) => {
         service: 'Gmail',
         auth: {
           user: 'jacobole2000@gmail.com',
-          pass: 'auqsbjqeytkvmnhz'
+          
         }
       });
     mails.forEach((mail:any) => {
