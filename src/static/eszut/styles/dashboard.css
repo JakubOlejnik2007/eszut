@@ -9,7 +9,8 @@ a {
     font-size: 0.6em;
 }
 
-a:hover, a:active {
+a:hover,
+a:active {
     color: dimgray;
 }
 
@@ -26,12 +27,19 @@ table {
     border-collapse: collapse;
     border: 4px solid mintcream;
 }
-tr>td:first-child{
+tr > td:first-child {
     border: 4px solid mintcream;
 }
 td {
     border: 2px solid mintcream;
     padding: 5px;
+}
+
+.unsolved {
+    background-color: darkred;
+}
+.solved {
+    background-color: green;
 }
 
 button {
@@ -43,13 +51,11 @@ button {
 }
 
 button:hover {
-    color:mintcream;
+    color: mintcream;
     background-color: #121212;
     transition: ease-out 1s;
 }
 
-@media screen and (min-width:768px) {
-    article{
-        width: 40%;
-    }
+article {
+    width: fit-content;
 }

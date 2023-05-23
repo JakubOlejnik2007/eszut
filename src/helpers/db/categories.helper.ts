@@ -5,11 +5,11 @@ import Category from "./models/category.helper";
 export const getCategories = async () => {
     try {
         const categories = await Category.find({});
-        return categories
+        return categories;
     } catch (error) {
-        throw new Error(`[❌] ${error}`)
+        throw new Error(`[❌] ${error}`);
     }
-}
+};
 
 export const addCategory = async (data: TCategory) => {
     try {
@@ -17,6 +17,6 @@ export const addCategory = async (data: TCategory) => {
         await category.save();
         console.log(category);
     } catch (error) {
-        console.log(`[❌] ${error}`)
+        console.log(`[❌] ${error}`);
     }
-}
+};

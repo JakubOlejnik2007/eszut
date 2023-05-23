@@ -7,15 +7,13 @@ h1 {
 form {
     margin: auto;
     width: 90%;
-    
 }
 
 .formContainer {
     display: grid;
-    grid-template-columns: 1fr minmax(150px,300px);
+    grid-template-columns: 1fr minmax(150px, 300px);
     grid-template-rows: 60px;
 }
-
 
 label {
     display: block;
@@ -23,7 +21,10 @@ label {
     margin: 20px auto;
 }
 
-select, input[type=text], input[type=email], input[type=password] {
+select,
+input[type="text"],
+input[type="email"],
+input[type="password"] {
     box-sizing: border-box;
     width: 100%;
     height: 40px;
@@ -32,7 +33,8 @@ select, input[type=text], input[type=email], input[type=password] {
     margin: auto auto;
 }
 
-input[type=submit], input[type=reset] {
+input[type="submit"],
+input[type="reset"] {
     width: 80px;
     height: 40px;
     font-weight: bold;
@@ -43,7 +45,8 @@ input[type=submit], input[type=reset] {
     color: #201f1f;
 }
 
-input[type=submit]:hover, input[type=reset]:hover {
+input[type="submit"]:hover,
+input[type="reset"]:hover {
     background-color: #201f1f;
     color: white;
     transition: 1s ease-out;
@@ -54,6 +57,7 @@ a {
     font-size: 0.6em;
 }
 
-a:hover, a:active {
+a:hover,
+a:active {
     color: dimgray;
 }
