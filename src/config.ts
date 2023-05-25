@@ -3,7 +3,7 @@ import { TConfigData } from "./types/config-type";
 
 dotenv.config();
 
-const { EXPRESS_PORT, MONGO_DB_IP, MONGO_DB_PORT, MONGO_DB_NAME, MAIL_SERVICE, MAIL_USER, MAIL_PASS } = process.env;
+const { EXPRESS_PORT, MONGO_DB_IP, MONGO_DB_PORT, MONGO_DB_NAME, MAIL_SERVICE, MAIL_USER, MAIL_PASS, VAPID_PUBLIC, VAPID_PRIVATE } = process.env;
 
 const config: TConfigData = {
     express: {
@@ -19,5 +19,9 @@ const config: TConfigData = {
         user: String(MAIL_USER),
         pass: String(MAIL_PASS),
     },
+    vapid: {
+        public: String(VAPID_PUBLIC),
+        private: String(VAPID_PRIVATE)
+    }
 };
 export default config;

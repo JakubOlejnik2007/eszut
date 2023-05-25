@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { addReport } from "./db/reports.helper";
 import { escape as htmlEscape } from "html-escaper"
 import sendMails from "./mailing.helper";
+//import { sendNotifications } from "./notifications.helper";
 
 const addNewReport = async (req: Request, res: Response) => {
     if(!req.body.where || !req.body.who || !req.body.what || !req.body.category) {
@@ -40,6 +41,7 @@ const addNewReport = async (req: Request, res: Response) => {
     let response = await addReport(report);
     if(response){
         sendMails(report)
+        //sendNotifications();
         res.status(201)
         res.redirect(`/eszut/?success=1&reportid=${report._id}`);
     } else {

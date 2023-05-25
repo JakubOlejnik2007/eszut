@@ -18,7 +18,6 @@ const fetchSolvedButton = document.querySelector(".fetchSolved");
 const solvedProblemsDiv = document.querySelector("#solved-problems");
 
 const fetchAndInsertSolvedProblems = async () => {
-    console.log("test 123");
     let problems = await fetch(`/eszut/getSolvedProblems`, {
         method: "POST",
     });
@@ -33,20 +32,32 @@ const fetchAndInsertSolvedProblems = async () => {
               <td><span style="font-size: 0.6em;">${x._id}</span></td>
           </tr>
           <tr>
-              <td>Gdzie?</td>
+              <td>Wystąpienie</td>
               <td>${x.where}</td>
           </tr>
           <tr>
-              <td>Kto?</td>
+              <td>Zgłaszający</td>
               <td>${x.who}</td>
           </tr>
           <tr>
-              <td>Co?</td>
+              <td>Opis problemu</td>
               <td>${x.what}</td>
           </tr>
           <tr>
               <td>Kategoria</td>
-              <td>${x.category[0].name}</td>
+              <td>${x.category.name}</td>
+          </tr>
+          <tr>
+            <td>Data zgłoszenia</td>
+            <td>${new Date(x.when ? x.when.valueOf() : 0 ).toLocaleString('pl')}</td>
+          </tr>
+          <tr>
+            <td>Administrator</td>
+            <td>${x.admin.name}</td>
+          </tr>
+          <tr>
+            <td>Data rozwiązania</td>
+            <td>${new Date(x.dateOfSolved ? x.dateOfSolved.valueOf() : 0 ).toLocaleString('pl')}</td>
           </tr>
           <tr>
               <td colspan="2">

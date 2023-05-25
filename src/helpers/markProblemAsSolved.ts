@@ -4,9 +4,10 @@ import Report from "./db/models/report.helper";
 const markProblemAsSolved = async (req: Request, res: Response) => {
     try {
         const report = await Report.findById(req.body.id);
-        console.log(report);
         if (report) {
             report.isSolved = !report.isSolved;
+            report.AdministratorWhoSolvedID = req.session.user?._id;
+            report.dateOfSolved = Date.now();
             await report.save();
         }
     } catch (error) {

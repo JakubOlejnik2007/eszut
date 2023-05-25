@@ -15,6 +15,17 @@ const fetchProblems = async (req: Request, res: Response) => {
                     as: "category",
                 },
             },
+            { $unwind: "$category"},
+            {
+                $lookup: {
+                    from: "administrators",
+                    localField: "AdministratorWhoSolvedID",
+                    foreignField: "_id",
+                    as: "admin",
+                },
+            },
+            { $unwind: "$admin"},
+
         ]).exec();
         res.send(JSON.stringify(result));
     } catch (error) {

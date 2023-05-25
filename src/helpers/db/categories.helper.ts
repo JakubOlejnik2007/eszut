@@ -15,8 +15,7 @@ export const addCategory = async (data: TCategory) => {
     try {
         const category = new Category(data);
         await category.save();
-        console.log(category);
-    } catch (error) {
-        console.log(`[❌] ${error}`);
+    } catch {
+        console.log("")
     }
 };

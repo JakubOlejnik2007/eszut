@@ -13,6 +13,7 @@ import signin from "./helpers/signin.helper";
 import logout from "./helpers/logout.helper";
 import markProblemAsSolved from "./helpers/markProblemAsSolved";
 import fetchProblems from "./helpers/getSolvedProblems.helper";
+import { subscribe } from "./helpers/notifications.helper";
 
 const app: Express = express();
 
@@ -86,6 +87,9 @@ app.post("/eszut/getSolvedProblems", fetchProblems);
 app.post("/eszut/markReportAsSolved", markProblemAsSolved);
 app.post("/eszut/process/addNewReport", addNewReport);
 app.post("/eszut/process/signin", signin);
+
+app.post("/eszut/subscribe", subscribe)
+//app.post("/eszut/send-notification", sendNotifications)
 
 app.listen(config.express.port, () => {
     console.log(`[⚡] Server is listening on port: ${config.express.port}!`);

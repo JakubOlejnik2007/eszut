@@ -12,4 +12,8 @@ export type TConfigData = {
         user: string;
         pass: string;
     };
+    vapid: {
+        public: String;
+        private: String;
+    };
 };

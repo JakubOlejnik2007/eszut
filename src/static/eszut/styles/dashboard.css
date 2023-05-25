@@ -44,7 +44,7 @@ td {
 
 button {
     width: 80%;
-    height: 80%;
+    height: fit-content;
     padding: 5px;
     background-color: mintcream;
     color: #121212;
