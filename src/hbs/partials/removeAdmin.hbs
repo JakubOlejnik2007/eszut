@@ -1,0 +1,13 @@
+<form action="/eszut/process/removeAdmin" method="post">
+    <h2>Usuń administratora systemu:</h2>
+    <label for="admin">Wybierz administratora do usunięcia</label>
+    <select name="admin" id="admin" required>
+        {{admins}}
+        {{#each admins}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+    </select>
+    <label for="confirmPassword">Potwierdź operację hasłem:</label>
+    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Wpisz swoje hasło..." required>
+    <input type="submit" value="Usuń administratora">
+</form>

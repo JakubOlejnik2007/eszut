@@ -1,0 +1,112 @@
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Elektroniczny System Zgłaszania Usterek Technicznych" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="Jakub Olejnik" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{{subject}}}</title>
+    <style>
+        body {
+            background-color: #000;
+            font-family: Verdana, sans-serif;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 95%;
+            margin: auto;
+            background-color: #123456;
+            padding: 10px;
+            border-radius: 25px;
+            color: #f2f2f2;
+        }
+
+        a {
+            color: azure !important;
+        }
+
+        a:hover,
+        a:active {
+            color: dimgray !important;
+        }
+
+        table {
+            width: 85%;
+            box-sizing: border-box;
+            margin: 5px;
+            text-align: center;
+            border-collapse: collapse;
+            border: 4px solid mintcream;
+        }
+
+        tr>td:first-child {
+            border: 4px solid mintcream;
+        }
+
+        td {
+            border: 2px solid mintcream;
+            padding: 5px;
+        }
+
+        .unsolved {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h1>Administrator <i>{{who.name}}</i> podjął nową akcje ({{when}})</h1>
+            <p>
+                {{#if action}}
+                Do listy administratorów został/a dopisany/a:
+                {{else}}
+                Z listy administratorów został/a usunięty/a:
+                {{/if}}
+            <table>
+                <thead>
+                    <th>Administrator:</th>
+                    <th>
+                        {{#if action}}
+                        Dodany:
+                        {{else}}
+                        Usunięty:
+                        {{/if}}
+                    </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{who._id}}</td>
+                        <td>{{personData._id}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{who.name}}</td>
+                        <td>{{personData.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{who.email}}</td>
+                        <td>{{personData.email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            </p>
+            <p>
+                Wiadomość wygenerowana automatycznie
+            <pre>{{when}}</pre> przez <i>Elektroniczny System Zgłaszania Usterek Technicznych</i>. Prosimy nie
+            odpowiadać na tą wiadomość.<br>
+            Wiadomość trafiła do Pana/Pani, ponieważ Pana/Pani mail znajduje się na liście administratorów systemu.
+            </p>
+        </div>
+    </main>
+</body>
+
+</html>
