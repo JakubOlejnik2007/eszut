@@ -1,26 +1,23 @@
 <h1>Zaloguj się!</h1>
 <form action="/eszut/process/signin" method="post">
-        {{#if (ifCond memory.success '==' "0")}}
-        <div class="fail">
-            Nastąpił błąd podczas logowania do panelu.
-        </div>
-        {{/if}}
-    
+    {{#if (ifCond memory.success '==' "0")}}
+    <div class="fail">
+        Nastąpił błąd podczas logowania do panelu.
+    </div>
+    {{/if}}
+
 
 
     <div class="formContainer">
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required placeholder="abc@example.com"
-        {{#if memory.email}}
-            value="{{memory.email}}"
-        {{/if}}
-    />
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required placeholder="abc@mno.xyz" {{#if memory.email}}
+            value="{{memory.email}}" {{/if}} />
 
-    <label for="password">Hasło</label>
-    <input type="password" name="password" id="password" required placeholder="* * * * * * * *"/>
+        <label for="password">Hasło</label>
+        <input type="password" name="password" id="password" required placeholder="* * * * * * * *" />
 
-    <input type="submit" value="Wyślij">
-    <input type="reset" value="Wyczyść">
+        <input type="submit" value="Wyślij">
+        <input type="reset" value="Wyczyść">
     </div>
 </form>
 <a href="/eszut/">Przejdź do panelu zgłaszania!</a>

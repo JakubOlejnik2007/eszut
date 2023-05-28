@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Report from "./db/models/report.helper";
 
-const fetchProblems = async (req: Request, res: Response) => {
+const fetchSolvedProblems = async (req: Request, res: Response) => {
     try {
         const result = await Report.aggregate([
             {
@@ -26,7 +26,9 @@ const fetchProblems = async (req: Request, res: Response) => {
             },
             { $unwind: "$admin"},
 
-        ]).exec();
+        ]).sort({
+            when:-1
+        }).exec();
         res.send(JSON.stringify(result));
     } catch (error) {
         throw new Error(`[❌] ${error}`);
@@ -34,4 +36,4 @@ const fetchProblems = async (req: Request, res: Response) => {
     res.end();
 };
 
-export default fetchProblems;
+export default fetchSolvedProblems;

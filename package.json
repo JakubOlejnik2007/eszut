@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev --respawn ./src/index.ts",
-    "build": "tsc && xcopy src\\hbs dist\\hbs /s /e /i && xcopy src\\static dist\\static /s /e /i"
+    "build": "tsc && xcopy src\\hbs dist\\hbs /s /e /i && xcopy src\\static dist\\static /s /e /i",
+    "create-root-user": "node ./dist/config_env.js echo \"Created user with name root, email: test@test.test and password root!eszut\""
   },
   "author": "Jakub Olejnik",
   "license": "ISC",

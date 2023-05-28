@@ -1,20 +1,16 @@
-self.addEventListener('install', event => {
+self.addEventListener("install", (event) => {
     event.waitUntil(
-      caches.open('my-cache').then(cache => {
-        return cache.addAll([
-          '/eszut/',
-          '/eszut/styles/main.css'
-        ]);
-      })
+        caches.open("my-cache").then((cache) => {
+            return cache.addAll(["/eszut/", "/eszut/styles/main.css"]);
+        })
     );
-  });
-  
-  // Obsługa żądań sieciowych przez Service Workera
-  self.addEventListener('fetch', event => {
+});
+
+// Obsługa żądań sieciowych przez Service Workera
+self.addEventListener("fetch", (event) => {
     event.respondWith(
-      caches.match(event.request).then(response => {
-        return response || fetch(event.request);
-      })
+        caches.match(event.request).then((response) => {
+            return response || fetch(event.request);
+        })
     );
-  });
-  
+});

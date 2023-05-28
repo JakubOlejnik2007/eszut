@@ -5,6 +5,18 @@
 <p>Witaj {{user.name}}! </p>
 
 <section>
+    {{#if (ifCond memory.success '==' "0")}}
+    <div class="fail">
+        Operacja zakończona niepowodzeniem
+    </div>
+    {{/if}}
+
+    {{#if (ifCond memory.success '==' "1")}}
+    <div class="success">
+        Operacja zakończona sukcesem
+    </div>
+    {{/if}}
+
     <h2>Problemy do rozwiązania:</h2>
     <div class="problems">
         {{#each data}}
@@ -17,7 +29,13 @@
     <div class="problems" id="solved-problems">
         <button class="fetchSolved">Pobierz rozwiązane zgłoszenia</button>
     </div>
+</section>
+<section class="profileActions">
+    {{>changeEmail}}
+    {{>changePassword}}
+    {{>removeAdmin}}
 
+    {{>promoteNewAdmin}}
 </section>
 <link rel="stylesheet" href="/eszut/styles/dashboard.css">
 <script src="/eszut/scripts/problems.js"></script>

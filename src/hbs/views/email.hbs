@@ -1,106 +1,110 @@
 <html lang="pl">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="description" content="Elektroniczny System Zgłaszania Usterek Technicznych" />
-        <meta name="keywords" content="egzamin, technik, informatyk" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="author" content="Jakub Olejnik" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{{{subject}}}</title>
-        <style>
-            body { 
-                background-color: #000; 
-                font-family: Verdana, sans-serif; 
-            } 
-            main { 
-                display: flex; 
-                justify-content: center; 
-                align-items: center; 
-                height: 100vh;
-            } 
-            .container { 
-                width: 80%;
-                margin: auto; 
-                background-color:#123456; 
-                padding: 40px; 
-                border-radius: 25px; 
-                color: #f2f2f2;
-            } 
-            a{ 
-                color: azure !important; 
-            } 
-            a:hover, a:active { 
-                color: dimgray !important; 
-            } 
-            .problems {
-                display: flex; 
-                flex-wrap: wrap; 
-                justify-content: space-evenly; 
-            } 
-            table { 
-                width: 85%;
-                box-sizing: border-box; 
-                margin:10px; 
-                text-align: center; 
-                border-collapse: collapse; 
-                border: 4px solid mintcream; 
-            } 
-            tr > td:first-child {
-                border: 4px solid mintcream; 
-            } 
-            td { 
-                border: 2px solid mintcream; 
-                padding: 5px; } 
-            .unsolved {
-                background-color: darkred; 
-            } 
 
-        </style>
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Elektroniczny System Zgłaszania Usterek Technicznych" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="Jakub Olejnik" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{{subject}}}</title>
+    <style>
+        body {
+            background-color: #000;
+            font-family: Verdana, sans-serif;
+        }
 
-    <body>
-        <main>
-            <div class="container">
-                <article id="article{{_id}}">
-                    <h1>Zgłoszono nowy problem!</h1>
-                    <table>
-                        <tr class="unsolved">
-                            <td>ID</td>
-                            <td><span style="font-size: 0.8em;">{{_id}}</span></td>
-                        </tr>
-                        <tr>
-                            <td>Wystąpienie</td>
-                            <td>{{where}}</td>
-                        </tr>
-                        <tr>
-                            <td>Zgłaszający</td>
-                            <td>{{who}}</td>
-                        </tr>
-                        <tr>
-                            <td>Opis problemu</td>
-                            <td>{{what}}</td>
-                        </tr>
-                        <tr>
-                            <td>Kategoria</td>
-                            <td>{{category}}</td>
-                        </tr>
-                        <tr>
-                            <td>Data zgłoszenia</td>
-                            <td>{{when}}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <a href="http://localhost:5001/eszut/dashboard">Przejdź do panelu administratora</a>
-                            </td>
-                        </tr>
-                    </table>
-                    <p>
-                        Wiadomość wygenerowana automatycznie <pre>{{when}}</pre> przez <i>Elektroniczny System Zgłaszania Usterek Technicznych</i>. Prosimy nie odpowiadać na tą wiadomość.<br>
-                        Wiadomość trafiła do Pana/Pani, ponieważ Pana/Pani mail znajduje się na liście administratorów systemu.
-                    </p>
-                </article>
-            </div>
-        </main>
-    </body>
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 95%;
+            margin: auto;
+            background-color: #123456;
+            padding: 10px;
+            border-radius: 25px;
+            color: #f2f2f2;
+        }
+
+        a {
+            color: azure !important;
+        }
+
+        a:hover,
+        a:active {
+            color: dimgray !important;
+        }
+
+        table {
+            width: 85%;
+            box-sizing: border-box;
+            margin: 5px;
+            text-align: center;
+            border-collapse: collapse;
+            border: 4px solid mintcream;
+        }
+
+        tr>td:first-child {
+            border: 4px solid mintcream;
+        }
+
+        td {
+            border: 2px solid mintcream;
+            padding: 5px;
+        }
+
+        .unsolved {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h1>Zgłoszono nowy problem!</h1>
+            <table>
+                <tr class="unsolved">
+                    <td>ID</td>
+                    <td><span style="font-size: 0.8em;">{{_id}}</span></td>
+                </tr>
+                <tr>
+                    <td>Wystąpienie</td>
+                    <td>{{where}}</td>
+                </tr>
+                <tr>
+                    <td>Zgłaszający</td>
+                    <td>{{who}}</td>
+                </tr>
+                <tr>
+                    <td>Opis problemu</td>
+                    <td>{{what}}</td>
+                </tr>
+                <tr>
+                    <td>Kategoria</td>
+                    <td>{{category}}</td>
+                </tr>
+                <tr>
+                    <td>Data zgłoszenia</td>
+                    <td>{{when}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <a href="http://localhost:5001/eszut/dashboard">Przejdź do panelu administratora</a>
+                    </td>
+                </tr>
+            </table>
+            <p>
+                Wiadomość wygenerowana automatycznie
+            <pre>{{when}}</pre> przez <i>Elektroniczny System Zgłaszania Usterek Technicznych</i>. Prosimy nie
+            odpowiadać na tą wiadomość.<br>
+            Wiadomość trafiła do Pana/Pani, ponieważ Pana/Pani mail znajduje się na liście administratorów systemu.
+            </p>
+        </div>
+    </main>
+</body>
 
 </html>

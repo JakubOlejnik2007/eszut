@@ -1,5 +1,5 @@
 import config from "../config";
-import { TReport } from "../types/db-types";
+import { TAdministrator, TReport } from "../types/db-types";
 import Administrator from "./db/models/administrator.helper";
 import nodemailer from "nodemailer";
 import { create } from "express-handlebars";
@@ -25,13 +25,12 @@ const hbs = exphbs.create({
     layoutsDir: path.resolve(__dirname, '../hbs/layouts'),
   });
   
-  // Ustawienie silnika szablonów Handlebars dla Nodemailer
   transporter.use(
     'compile',
     nodemailerHbs({
       viewEngine: hbs,
       viewPath: path.resolve(__dirname, '../hbs/views'),
-      extName: '.hbs', // Dodaj to pole, aby używać rozszerzenia .hbs
+      extName: '.hbs',
     })
   );
 
@@ -78,5 +77,43 @@ const sendMails = async (report: TReport) => {
         });
     });
 };
+
+export const sendMailsAboutActions = async (admin: TAdministrator, action: boolean, personData: TAdministrator) => {
+    // True - dodanie użytkownika
+    // False - usunięcie
+    const mails = await getAdminMails();
+    let contentToSend: any = {
+        who: admin,
+        action: action,
+        personData: {
+            _id: personData._id?.toString(),
+            name: personData.name,
+            email: personData.email
+        },
+        when: new Date().toLocaleString('pl')
+    }
+
+    console.log(contentToSend)
+
+    mails.forEach((mail: any) => {
+        const mailOptions = {
+            from: config.mail.user,
+            to: mail,
+            subject: `Nowa akcja administratora ${contentToSend.who.name}`,
+            template: "actionEmail",
+            context: contentToSend
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error(error);
+            } else {
+                console.log("E-mail został wysłany:", info.response);
+            }
+        });
+    });
+};
+
+
 
 export default sendMails;

@@ -12,6 +12,7 @@ const reportForm = async (req: Request, res: Response): Promise<void> => {
         };
     });
     res.render("reportForm", {
+        title: "Zgłoś problem!",
         category: category,
         memory: memory,
     });

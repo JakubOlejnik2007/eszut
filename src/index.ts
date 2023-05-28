@@ -12,8 +12,9 @@ import signinForm from "./helpers/signinForm.helper";
 import signin from "./helpers/signin.helper";
 import logout from "./helpers/logout.helper";
 import markProblemAsSolved from "./helpers/markProblemAsSolved";
-import fetchProblems from "./helpers/getSolvedProblems.helper";
+import fetchSolvedProblems from "./helpers/getSolvedProblems.helper";
 import { subscribe } from "./helpers/notifications.helper";
+import { changeEmail, changePassword, promoteNewAdmin, removeAdmin } from "./helpers/profileActions.helper";
 
 const app: Express = express();
 
@@ -83,10 +84,16 @@ app.get("/eszut/dashboard", dashboard);
 app.get("/eszut/signin", signinForm);
 app.get("/eszut/logout", logout);
 
-app.post("/eszut/getSolvedProblems", fetchProblems);
+app.post("/eszut/getSolvedProblems", fetchSolvedProblems);
 app.post("/eszut/markReportAsSolved", markProblemAsSolved);
 app.post("/eszut/process/addNewReport", addNewReport);
 app.post("/eszut/process/signin", signin);
+
+app.post("/eszut/process/changePassword", changePassword);
+app.post("/eszut/process/changeEmail", changeEmail);
+app.post("/eszut/process/promoteNewAdmin", promoteNewAdmin);
+app.post("/eszut/process/removeAdmin", removeAdmin);
+
 
 app.post("/eszut/subscribe", subscribe)
 //app.post("/eszut/send-notification", sendNotifications)
