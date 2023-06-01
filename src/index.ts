@@ -5,16 +5,14 @@ import path from "path";
 
 import config from "./config";
 import reportForm from "./helpers/reportForm.helper";
-import addNewReport from "./helpers/addNewReport.helper";
 import { TAdministrator } from "./types/db-types";
 import dashboard from "./helpers/dashboard.helper";
-import signinForm from "./helpers/signinForm.helper";
-import signin from "./helpers/signin.helper";
+import { signinForm, signin} from "./helpers/signin.helper";
 import logout from "./helpers/logout.helper";
-import markProblemAsSolved from "./helpers/markProblemAsSolved";
-import fetchSolvedProblems from "./helpers/getSolvedProblems.helper";
 import { subscribe } from "./helpers/notifications.helper";
 import { changeEmail, changePassword, promoteNewAdmin, removeAdmin } from "./helpers/profileActions.helper";
+import { addNewReport, fetchSolvedProblems, markProblemAsSolved } from "./helpers/db/reports.helper";
+import { addCategory } from "./helpers/db/categories.helper";
 
 const app: Express = express();
 
@@ -88,7 +86,7 @@ app.post("/eszut/getSolvedProblems", fetchSolvedProblems);
 app.post("/eszut/markReportAsSolved", markProblemAsSolved);
 app.post("/eszut/process/addNewReport", addNewReport);
 app.post("/eszut/process/signin", signin);
-
+app.post("/eszut/process/addCategory", addCategory)
 app.post("/eszut/process/changePassword", changePassword);
 app.post("/eszut/process/changeEmail", changeEmail);
 app.post("/eszut/process/promoteNewAdmin", promoteNewAdmin);

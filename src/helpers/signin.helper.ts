@@ -23,7 +23,25 @@ const redirectToSigninForm = (req: Request, res: Response) => {
     res.status(301);
 };
 
-const signin = async (req: Request, res: Response) => {
+
+export const signinForm = async (req: Request, res: Response) => {
+    try {
+        if(req.session.isLogged) {
+            res.status(301);
+            res.redirect("/eszut/dashboard");
+        } else {
+            res.render("signinForm", {
+                title: "Zaloguj się",
+                memory: req.query
+            });
+        }
+    } catch (error) {
+        res.status(301)
+        res.redirect("/eszut")
+    }
+}
+
+export const signin = async (req: Request, res: Response) => {
     if (!req.body.email || !req.body.password) {
         redirectToSigninForm(req, res);
         return;

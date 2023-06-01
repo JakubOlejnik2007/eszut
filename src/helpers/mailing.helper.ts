@@ -93,7 +93,6 @@ export const sendMailsAboutActions = async (admin: TAdministrator, action: boole
         when: new Date().toLocaleString('pl')
     }
 
-    console.log(contentToSend)
 
     mails.forEach((mail: any) => {
         const mailOptions = {

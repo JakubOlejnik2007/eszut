@@ -1,31 +1,10 @@
 import { Request, Response } from "express";
-import Report from "./db/models/report.helper";
 import { TAdministrator, TCategory, TReport } from "../types/db-types";
-import Category from "./db/models/category.helper";
 import Administrator from "./db/models/administrator.helper";
+import { fetchProblems } from "./db/reports.helper";
+import { getCategories } from "./db/categories.helper";
 
-const fetchProblems = async () => {
-    try {
-        const result = await Report.aggregate([
-            {
-                $match: { isSolved: false },
-            },
-            {
-                $lookup: {
-                    from: "categories",
-                    localField: "CategoryID",
-                    foreignField: "_id",
-                    as: "category",
-                },
-            },
-        ])
-            .sort({ when: -1 })
-            .exec();
-        return result;
-    } catch (error) {
-        throw new Error(`[❌] ${error}`);
-    }
-};
+
 
 const getAdminList = async () => {
     try {
@@ -67,6 +46,7 @@ const dashboard = async (req: Request, res: Response) => {
             data: result,
             user: req.session.user,
             admins: await getAdminList(),
+            categories: getCategories(),
             memory: req.query
         });
     } catch (error) {

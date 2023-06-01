@@ -2,7 +2,6 @@ import { compare, hash } from "bcrypt";
 import { Response, Request } from "express";
 import Administrator from "./db/models/administrator.helper";
 import { escape as htmlEscape } from "html-escaper";
-import { TAdministrator } from "../types/db-types";
 import { sendMailsAboutActions } from "./mailing.helper";
 import mongoose from "mongoose";
 
